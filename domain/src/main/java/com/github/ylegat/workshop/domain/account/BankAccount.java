@@ -82,90 +82,74 @@ public class BankAccount {
 
     @DecisionFunction
     private void registerBankAccount(String bankAccountId) {
-        eventStore.save(version, new BankAccountRegistered(bankAccountId))
-                  .forEach(this::applyEvent);
+        /*
+          1. instantiate a BankAccountRegistered event
+          2. save the event List<Event> savedEvents = eventStore.save(events)
+          3. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
+         */
     }
 
     @DecisionFunction
     public void provisionCredit(int creditToProvision) {
-        eventStore.save(version, new CreditProvisioned(id, creditToProvision, creditBalance + creditToProvision))
-                  .forEach(this::applyEvent);
+        /*
+          1. instantiate a CreditProvisioned event
+          2. save the event List<Event> savedEvents = eventStore.save(events)
+          3. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
+         */
     }
 
     @DecisionFunction
     public void withdrawCredit(int creditToWithdraw) {
-        int newCreditBalance = creditBalance - creditToWithdraw;
-        if (newCreditBalance < 0) {
-            logger.info("not enough credit ({}) to withdraw {}", creditBalance, creditToWithdraw);
-            throw new InvalidCommandException();
-        }
-
-        eventStore.save(version, new CreditWithdrawn(id, creditToWithdraw, newCreditBalance))
-                  .forEach(this::applyEvent);
+        // /!\ creditToWithdraw represent a positive value
+        /*
+          1. throw an InvalidCommandException if the balance is lower then the credit amount to withdraw
+          2. instantiate a CreditWithdrawn event
+          3. save the event List<Event> savedEvents = eventStore.save(events)
+          4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
+         */
     }
 
     @DecisionFunction
     public String requestTransfer(String bankAccountDestinationId, int creditToTransfer) {
-        if (bankAccountDestinationId.equals(id)) {
-            logger.info("cannot transfer {} credit to same account {}", creditToTransfer, bankAccountDestinationId);
-            throw new InvalidCommandException();
-        }
-
-        int newCreditBalance = creditBalance - creditToTransfer;
-        if (newCreditBalance < 0) {
-            logger.info("not enough credit ({}) to transfer {}", creditBalance, creditToTransfer);
-            throw new InvalidCommandException();
-        }
-
-        String transferId = generateTransferId();
-        eventStore.save(version, new TransferRequested(id,
-                                                       transferId,
-                                                       bankAccountDestinationId,
-                                                       creditToTransfer,
-                                                       newCreditBalance))
-                  .forEach(this::applyEvent);
-
-        return transferId;
+        String randomTransferId = generateTransferId();
+        /*
+          1. throw an InvalidCommandException if the bank destination id is the same that this id
+          2. throw an InvalidCommandException if the balance is lower then the credit amount to transfer
+          3. instantiate a TransferRequest event (you can generate a random transfer id by calling UUID.randomUUID)
+          4. save the event List<Event> savedEvents = eventStore.save(events)
+          5. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
+          6. return the transfer id associated the the transfer
+         */
+        return null;
     }
 
     @DecisionFunction
     public void receiveTransfer(String bankAccountOriginId, String transferId, int creditTransferred) {
-        eventStore.save(version, new TransferReceived(id,
-                                                      transferId,
-                                                      bankAccountOriginId,
-                                                      creditTransferred,
-                                                      creditBalance + creditTransferred))
-                  .forEach(this::applyEvent);
+        /*
+          1. instantiate a TransferReceived event
+          2. save the event (eventStore.save)
+          3. apply saved event on the bank account (EventProcessor.on)
+         */
     }
 
     @DecisionFunction
     public void completeTransfer(String transferId) {
-        TransferRequested transferRequested = pendingTransfers.get(transferId);
-        if (transferRequested == null) {
-            logger.info("transfer designed by id {} has not been requested or was already completed", transferId);
-            throw new InvalidCommandException();
-        }
-
-        eventStore.save(version, new TransferCompleted(id,
-                                                       transferId,
-                                                       transferRequested.bankAccountIdDestination))
-                  .forEach(this::applyEvent);
+        /*
+          1. throw an InvalidCommandException if the transfer id is absent from the pending transfers map
+          2. instantiate a TransferCompleted event
+          3. save the event List<Event> savedEvents = EventStore.save(events)
+          4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
+         */
     }
 
     @DecisionFunction
     public void cancelTransfer(String transferId) {
-        if (!pendingTransfers.containsKey(transferId)) {
-            logger.info("transfer designed by id {} has not been requested or was already completed", transferId);
-            throw new InvalidCommandException();
-        }
-
-        TransferRequested transferRequested = pendingTransfers.get(transferId);
-        eventStore.save(version, new TransferCanceled(id,
-                                                      transferId,
-                                                      transferRequested.bankAccountIdDestination,
-                                                      transferRequested.creditTransferred,
-                                                      creditBalance + transferRequested.creditTransferred))
-                  .forEach(this::applyEvent);
+        /*
+          1. throw an InvalidCommandException if the transfer id is absent from the pending transfers map
+          2. instantiate a TransferCanceled event
+          3. save the event List<Event> savedEvents = EventStore.save(events)
+          4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
+         */
     }
 
     @Override
@@ -204,56 +188,69 @@ public class BankAccount {
 
     private class InnerEventListener implements EventListener {
 
-
         @Override
         @EvolutionFunction
         public void on(BankAccountRegistered bankAccountRegistered) {
-            id = bankAccountRegistered.aggregateId;
-            version++;
+            /*
+              1. affect the event's aggregate id to the bank account's id
+              2. increment the aggregate's version
+             */
         }
 
         @Override
         @EvolutionFunction
         public void on(CreditProvisioned creditProvisioned) {
-            creditBalance = creditProvisioned.newCreditBalance;
-            version++;
+            /*
+              1. affect the event's new credit balance to the bank account's balance
+              2. increment the aggregate's version
+             */
         }
 
         @Override
         @EvolutionFunction
         public void on(CreditWithdrawn creditWithdrawn) {
-            creditBalance = creditWithdrawn.newCreditBalance;
-            version++;
+            /*
+              1. affect the event's new credit balance to the bank account's balance
+              2. increment the aggregate's version
+             */
         }
 
         @Override
         @EvolutionFunction
         public void on(TransferRequested transferRequested) {
-            creditBalance = transferRequested.newCreditBalance;
-            pendingTransfers.put(transferRequested.transferId, transferRequested);
-            version++;
+            /*
+              1. affect the event's new credit balance to the bank account's balance
+              2. add the event to the pending transfers map
+              3. increment the aggregate's version
+             */
         }
 
         @Override
         @EvolutionFunction
         public void on(TransferReceived transferReceived) {
-            creditBalance = transferReceived.newCreditBalance;
-            version++;
+            /*
+              1. affect the event's new credit balance to the bank account's balance
+              2. increment the aggregate's version
+             */
         }
 
         @Override
         @EvolutionFunction
         public void on(TransferCompleted transferCompleted) {
-            pendingTransfers.remove(transferCompleted.transferId);
-            version++;
+            /*
+              1. remove the event from the pending transfers map
+              2. increment the aggregate's version
+             */
         }
 
         @Override
         @EvolutionFunction
         public void on(TransferCanceled transferCanceled) {
-            pendingTransfers.remove(transferCanceled.transferId);
-            creditBalance = transferCanceled.newCreditBalance;
-            version++;
+            /*
+              1. affect the event's new credit balance to the bank account's balance
+              2. remove the event from the pending transfers map
+              3. increment the aggregate's version
+             */
         }
     }
 

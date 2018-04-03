@@ -45,7 +45,7 @@ public abstract class AbstractBankAccountTesting {
 
     private int softInstantComparator(Instant i1, Instant i2) {
         int diff = (int) between(i1, i2).getSeconds();
-        return abs(diff) <= 1 ? 0 : diff;
+        return abs(diff) <= 3 ? 0 : diff;
     }
 
 }
