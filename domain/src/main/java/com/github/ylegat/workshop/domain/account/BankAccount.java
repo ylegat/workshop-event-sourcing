@@ -84,7 +84,7 @@ public class BankAccount {
     private void registerBankAccount(String bankAccountId) {
         /*
           1. instantiate a BankAccountRegisteredEvent event
-          2. save the event List<Event> savedEvents = EventStore.save(events)
+          2. save the event List<Event> savedEvents = eventStore.save(events)
           3. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
          */
     }
@@ -93,7 +93,7 @@ public class BankAccount {
     public void provisionCredit(int creditToProvision) {
         /*
           1. instantiate a CreditProvisioned event
-          2. save the event List<Event> savedEvents = EventStore.save(events)
+          2. save the event List<Event> savedEvents = eventStore.save(events)
           3. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
          */
     }
@@ -103,7 +103,7 @@ public class BankAccount {
         /*
           1. throw an InvalidCommandException if the balance is lower then the credit amount to withdraw
           2. instantiate a CreditWithdrawn event
-          3. save the event List<Event> savedEvents = EventStore.save(events)
+          3. save the event List<Event> savedEvents = eventStore.save(events)
           4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
          */
     }
@@ -115,7 +115,7 @@ public class BankAccount {
           1. throw an InvalidCommandException if the bank destination id is the same that this id
           2. throw an InvalidCommandException if the balance is lower then the credit amount to transfer
           3. instantiate a TransferRequest event (you can generate a random transfer id by calling UUID.randomUUID)
-          4. save the event List<Event> savedEvents = EventStore.save(events)
+          4. save the event List<Event> savedEvents = eventStore.save(events)
           5. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
           6. return the transfer id associated the the transfer
          */
@@ -126,7 +126,7 @@ public class BankAccount {
     public void receiveTransfer(String bankAccountOriginId, String transferId, int creditTransferred) {
         /*
           1. instantiate a TransferReceived event
-          2. save the event (EventStore.save)
+          2. save the event (eventStore.save)
           3. apply saved event on the bank account (EventProcessor.on)
          */
     }

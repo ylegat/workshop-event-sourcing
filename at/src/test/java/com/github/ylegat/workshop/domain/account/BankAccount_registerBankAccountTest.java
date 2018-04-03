@@ -3,6 +3,7 @@ package com.github.ylegat.workshop.domain.account;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static com.github.ylegat.workshop.domain.account.BankAccount.registerBankAccount;
+import static org.assertj.core.api.Fail.fail;
 import org.junit.Test;
 import com.github.ylegat.workshop.domain.common.ConflictingEventException;
 
@@ -10,6 +11,7 @@ public class BankAccount_registerBankAccountTest extends AbstractBankAccountTest
 
     @Test
     public void should_register_bank_account_with_success() {
+        fail("Not implemented");
         // When
         /*
           when a bank account is registered (BankAccount.registerBankAccount)
@@ -28,6 +30,7 @@ public class BankAccount_registerBankAccountTest extends AbstractBankAccountTest
 
     @Test
     public void should_fail_registering_bank_account_with_already_used_id() {
+        fail("Not implemented");
         // Given
         /*
           Given a bank account registered (BankAccount.registerBankAccount)
