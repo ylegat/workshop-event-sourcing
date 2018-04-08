@@ -11,7 +11,7 @@ public class TransferProcessManagerTest extends AbstractBankAccountTesting {
 
     @Test
     public void should_complete_transfer_when_destination_exist() {
-        fail("fix me");
+        fail("Not implemented");
 
         // Given
         /*
@@ -28,14 +28,15 @@ public class TransferProcessManagerTest extends AbstractBankAccountTesting {
 
         // Then
         /*
-          1. "origin" events should contain exactly 1 BankAccountRegistered, 1 CreditProvisioned, 1 TransferRequested and 1 TransferCompleted
-          2. "destinations" events should contain exactly 1 BankAccountRegistered and 1 TransferReceived
+          1. Wait for the event bus to process events
+          2. "origin" events should contain exactly 1 BankAccountRegistered, 1 CreditProvisioned, 1 TransferRequested and 1 TransferCompleted
+          3. "destinations" events should contain exactly 1 BankAccountRegistered and 1 TransferReceived
          */
     }
 
     @Test
     public void should_cancel_transfer_when_destination_does_not_exist() {
-        fail("fix me");
+        fail("Not implemented");
 
         // Given
         /*
@@ -51,7 +52,8 @@ public class TransferProcessManagerTest extends AbstractBankAccountTesting {
 
         // Then
         /*
-          1. "origin" events should contains exactly 1 BankAccountRegistered, 1 CreditProvisioned, 1 TransferEmitted and 1 TransferCanceled
+          1. Wait for the event bus to process events
+          2. "origin" events should contains exactly 1 BankAccountRegistered, 1 CreditProvisioned, 1 TransferRequested and 1 TransferCanceled
          */
     }
 

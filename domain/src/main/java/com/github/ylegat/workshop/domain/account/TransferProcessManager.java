@@ -36,8 +36,8 @@ public class TransferProcessManager implements ProcessManager {
     public void on(TransferRequested transferRequested) {
         /*
           1. load the transfer destination bank account (BankAccount.loadBankAccount(...))
-          2. if the account exist, send a command to it for receiving the transfer
-          3. if it does not exist, load the transfer origin account and send a command for canceling the transfer
+          2. if the account exists, send a command to have it receive the transfer
+          3. if it does not exist, load the transfer origin account and send a command to cancel the transfer
           3. if the origin account does not exist, or if any exception is thrown by any command, log an error
          */
     }
@@ -46,7 +46,7 @@ public class TransferProcessManager implements ProcessManager {
     public void on(TransferReceived transferReceived) {
         /*
           1. load the transfer origin bank account
-          2. if the account exist, send a command for completing the transfer
+          2. if the account exists, send a command to complete the transfer
           3. if the account does not exist, or if any exception is thrown by any command, log an error
          */
     }
