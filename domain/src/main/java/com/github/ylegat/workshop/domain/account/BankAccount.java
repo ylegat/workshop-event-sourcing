@@ -114,10 +114,10 @@ public class BankAccount {
         /*
           1. throw an InvalidCommandException if the bank destination id is the same that this id
           2. throw an InvalidCommandException if the balance is lower then the credit amount to transfer
-          3. instantiate a TransferRequest event (you can generate a random transfer id by calling UUID.randomUUID)
+          3. instantiate a TransferRequested event
           4. save the event List<Event> savedEvents = eventStore.save(events)
           5. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
-          6. return the transfer id associated the the transfer
+          6. return the transfer id associated to the transfer
          */
         return null;
     }
@@ -126,8 +126,8 @@ public class BankAccount {
     public void receiveTransfer(String bankAccountOriginId, String transferId, int creditTransferred) {
         /*
           1. instantiate a TransferReceived event
-          2. save the event (eventStore.save)
-          3. apply saved event on the bank account (EventProcessor.on)
+          2. save the event List<Event> savedEvents = eventStore.save(events)
+          3. apply saved event on the bank account savedEvents.foreach(this::applyEvent)
          */
     }
 
