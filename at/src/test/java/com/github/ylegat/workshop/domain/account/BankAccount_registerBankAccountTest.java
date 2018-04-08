@@ -14,7 +14,7 @@ public class BankAccount_registerBankAccountTest extends AbstractBankAccountTest
         fail("Not implemented");
         // When
         /*
-          when a bank account is registered (BankAccount.registerBankAccount)
+          when a bank account is registered (BankAccount.registerBankAccount, use the eventStore instantiated in the parent class)
          */
 
         // Then
