@@ -34,34 +34,47 @@ public class TransferProcessManager implements ProcessManager {
 
     @Override
     public void on(TransferRequested transferRequested) {
-        /*
-          1. load the transfer destination bank account (BankAccount.loadBankAccount(...))
-          2. if the account exists, send a command to have it receive the transfer
-          3. if it does not exist, load the transfer origin account and send a command to cancel the transfer
-          4. if the origin account does not exist, or if any exception is thrown by any command, log an error
-         */
+        Optional<BankAccount> bankAccountDestination = loadBankAccount(transferRequested.bankAccountIdDestination, eventStore);
+
+        if (bankAccountDestination.isPresent()) {
+            executeCommand(() -> bankAccountDestination.get().receiveTransfer(transferRequested.aggregateId,
+                                                                              transferRequested.transferId,
+                                                                              transferRequested.creditTransferred));
+        } else {
+            Optional<BankAccount> bankAccountOrigin = loadBankAccount(transferRequested.aggregateId, eventStore);
+            if (bankAccountOrigin.isPresent()) {
+                executeCommand(() -> bankAccountOrigin.get().cancelTransfer(transferRequested.transferId));
+            } else {
+                logger.error("unknown account cannot cancel transfer {}", transferRequested);
+            }
+        }
     }
 
     @Override
     public void on(TransferReceived transferReceived) {
-        /*
-          1. load the transfer origin bank account
-          2. if the account exists, send a command to complete the transfer
-          3. if the account does not exist, or if any exception is thrown by any command, log an error
-         */
+        Optional<BankAccount> bankAccountDestination = loadBankAccount(transferReceived.bankAccountIdOrigin, eventStore);
+        if (bankAccountDestination.isPresent()) {
+            executeCommand(() -> bankAccountDestination.get().completeTransfer(transferReceived.transferId));
+        } else {
+            logger.error("unknown account cannot complete transfer {}", transferReceived);
+        }
+    }
+
+    private void executeCommand(Runnable command) {
+        try {
+            command.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void on(TransferCompleted transferCompleted) {
-        /*
-          TransferCompleted event is ignored by the transfer process manager
-         */
+
     }
 
     @Override
     public void on(TransferCanceled transferCanceled) {
-        /*
-          TransferCanceled event is ignored by the transfer process manager
-         */
+
     }
 }
