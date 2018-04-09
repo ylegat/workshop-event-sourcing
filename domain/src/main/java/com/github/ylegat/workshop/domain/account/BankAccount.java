@@ -82,31 +82,26 @@ public class BankAccount {
 
     @DecisionFunction
     private void registerBankAccount(String bankAccountId) {
-        /*
-          1. instantiate a BankAccountRegistered event
-          2. save the event List<Event> savedEvents = eventStore.save(events)
-          3. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
-         */
+        eventStore.save(version, new BankAccountRegistered(bankAccountId))
+                  .forEach(this::applyEvent);
     }
 
     @DecisionFunction
     public void provisionCredit(int creditToProvision) {
-        /*
-          1. instantiate a CreditProvisioned event
-          2. save the event List<Event> savedEvents = eventStore.save(events)
-          3. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
-         */
+        eventStore.save(version, new CreditProvisioned(id, creditToProvision, creditBalance + creditToProvision))
+                  .forEach(this::applyEvent);
     }
 
     @DecisionFunction
     public void withdrawCredit(int creditToWithdraw) {
-        // /!\ creditToWithdraw represent a positive value
-        /*
-          1. throw an InvalidCommandException if the balance is lower then the credit amount to withdraw
-          2. instantiate a CreditWithdrawn event
-          3. save the event List<Event> savedEvents = eventStore.save(events)
-          4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
-         */
+        int newCreditBalance = creditBalance - creditToWithdraw;
+        if (newCreditBalance < 0) {
+            logger.info("not enough credit ({}) to withdraw {}", creditBalance, creditToWithdraw);
+            throw new InvalidCommandException();
+        }
+
+        eventStore.save(version, new CreditWithdrawn(id, creditToWithdraw, newCreditBalance))
+                  .forEach(this::applyEvent);
     }
 
     @DecisionFunction
@@ -191,28 +186,22 @@ public class BankAccount {
         @Override
         @EvolutionFunction
         public void on(BankAccountRegistered bankAccountRegistered) {
-            /*
-              1. affect the event's aggregate id to the bank account's id
-              2. increment the aggregate's version
-             */
+            id = bankAccountRegistered.aggregateId;
+            version++;
         }
 
         @Override
         @EvolutionFunction
         public void on(CreditProvisioned creditProvisioned) {
-            /*
-              1. affect the event's new credit balance to the bank account's balance
-              2. increment the aggregate's version
-             */
+            creditBalance = creditProvisioned.newCreditBalance;
+            version++;
         }
 
         @Override
         @EvolutionFunction
         public void on(CreditWithdrawn creditWithdrawn) {
-            /*
-              1. affect the event's new credit balance to the bank account's balance
-              2. increment the aggregate's version
-             */
+            creditBalance = creditWithdrawn.newCreditBalance;
+            version++;
         }
 
         @Override
