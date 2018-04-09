@@ -1,60 +1,71 @@
 package com.github.ylegat.workshop.domain.account;
 
 import static com.github.ylegat.workshop.domain.account.BankAccount.registerBankAccount;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class TransferProcessManagerTest extends AbstractBankAccountTesting {
 
     @Test
-    public void should_cancel_transfer_when_destination_does_not_exist() {
-        fail("Not implemented");
-
+    public void should_cancel_transfer_when_destination_does_not_exist() throws InterruptedException {
         // Given
-        /*
-          1. a transfer process manager registered with the event bus (the event bus is accessible from the superclass)
-          2. a registration of the process manager into the event bus (super.eventBus.register(...))
-          3. a bank account ("origin") registered and provisioned with 1 credit
-         */
+        TransferProcessManager transferProcessManager = new TransferProcessManager(eventStore);
+        eventBus.register(transferProcessManager);
+
+        BankAccount bankAccountOrigin = registerBankAccount("bankAccountOriginId", eventStore);
+        bankAccountOrigin.provisionCredit(1);
 
         // When
-        /*
-          when a transfer is initialized from "origin" to a non registered bank account id
-         */
+        String transferId = bankAccountOrigin.requestTransfer("bankAccountDestinationId", 1);
 
         // Then
-        /*
-          1. Wait for the event bus to process events
-          2. "origin" events should contains exactly 1 BankAccountRegistered, 1 CreditProvisioned, 1 TransferRequested and 1 TransferCanceled
-         */
+        Thread.sleep(500);
+        assertThatEvents("bankAccountOriginId").containsExactly(new BankAccountRegistered("bankAccountOriginId"),
+                                                                new CreditProvisioned("bankAccountOriginId", 1, 1),
+                                                                new TransferRequested("bankAccountOriginId",
+                                                                                      transferId,
+                                                                                      "bankAccountDestinationId",
+                                                                                      1,
+                                                                                      0),
+                                                                new TransferCanceled("bankAccountOriginId",
+                                                                                     transferId,
+                                                                                     "bankAccountDestinationId",
+                                                                                     1,
+                                                                                     1));
     }
 
     @Test
-    public void should_complete_transfer_when_destination_exist() {
-        fail("Not implemented");
-
+    public void should_complete_transfer_when_destination_exist() throws InterruptedException {
         // Given
-        /*
-          1. a transfer process manager registered with the event bus (the event bus is accessible from the superclass)
-          2. a registration of the process manager into the event bus (super.eventBus.register(...))
-          3. a bank account ("origin") registered and provisioned with 1 credit
-          4. a bank account ("destination") registered
-         */
+        TransferProcessManager transferProcessManager = new TransferProcessManager(eventStore);
+        eventBus.register(transferProcessManager);
+
+        registerBankAccount("bankAccountDestinationId", eventStore);
+
+        BankAccount bankAccountOrigin = registerBankAccount("bankAccountOriginId", eventStore);
+        bankAccountOrigin.provisionCredit(1);
 
         // When
-        /*
-          when a transfer is requested from "origin" to "destination"
-         */
+        String transferId = bankAccountOrigin.requestTransfer("bankAccountDestinationId", 1);
 
         // Then
-        /*
-         1. Wait for the event bus to process events
-         2. "origin" events should contain exactly 1 BankAccountRegistered, 1 CreditProvisioned, 1 TransferRequested and 1 TransferCompleted
-         3. "destinations" events should contain exactly 1 BankAccountRegistered and 1 TransferReceived
-         */
+        Thread.sleep(500);
+        assertThatEvents("bankAccountOriginId").containsExactly(new BankAccountRegistered("bankAccountOriginId"),
+                                                                new CreditProvisioned("bankAccountOriginId", 1, 1),
+                                                                new TransferRequested("bankAccountOriginId",
+                                                                                      transferId,
+                                                                                      "bankAccountDestinationId",
+                                                                                      1,
+                                                                                      0),
+                                                                new TransferCompleted("bankAccountOriginId",
+                                                                                      transferId,
+                                                                                      "bankAccountDestinationId"));
+
+        assertThatEvents("bankAccountDestinationId").containsExactly(new BankAccountRegistered("bankAccountDestinationId"),
+                                                                     new TransferReceived("bankAccountDestinationId",
+                                                                                          transferId,
+                                                                                          "bankAccountOriginId",
+                                                                                          1,
+                                                                                          1));
     }
 
 }

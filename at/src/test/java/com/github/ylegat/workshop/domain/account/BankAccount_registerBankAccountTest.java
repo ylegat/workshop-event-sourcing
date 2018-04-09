@@ -11,45 +11,26 @@ public class BankAccount_registerBankAccountTest extends AbstractBankAccountTest
 
     @Test
     public void should_register_bank_account_with_success() {
-        fail("Not implemented");
         // When
-        /*
-          when a bank account is registered (BankAccount.registerBankAccount)
-         */
+        BankAccount bankAccount = registerBankAccount("bankAccountId", eventStore);
 
         // Then
-        /*
-          1. assert that the events associated to the bank account contains exactly one BankAccountRegistered event (use assertThatEvents method defined in the superclass)
-          * assertThatEvents(...).containsExactly(...)
-          2. the test fails, implement BankAccount.registerBankAccount decision function
-          3. assert on the state of the bank account (you can use Assertion.assertThat(actualBankAccount).isEqualTo(expectedBankAccount)) :
-          * it's id should be identical to the one created
-          * its credit should be equal to 0
-          * its version should be 1 (one event has been applied on the bank account)
-          4. the test fails, implement BankAccount.innerEventListener.on(BankAccountRegistered) evolution function
-         */
+        assertThatEvents("bankAccountId").containsExactly(new BankAccountRegistered("bankAccountId"));
+
+        assertThat(bankAccount).isEqualTo(new BankAccount("bankAccountId", eventStore, 0, 1));
     }
 
     @Test
     public void should_fail_registering_bank_account_with_already_used_id() {
-        fail("Not implemented");
         // Given
-        /*
-          Given a bank account registered (BankAccount.registerBankAccount)
-         */
+        registerBankAccount("bankAccountId", eventStore);
 
         // When
-        /*
-          When a bank account with the same id is registered (use Assertions.catchThrowable(() -> BankAccount.registerBankAccount(...)) to catch the exception)
-          * Throwable throwable = Assertions.catchThrowable(() -> BankAccount.registerBankAccount(...))
-         */
+        Throwable conflictingEventException = catchThrowable(() -> registerBankAccount("bankAccountId", eventStore));
 
         // Then
-        /*
-          1. assert that the command thrown a ConflictingEventException exception
-          * Assertions.assertThat(throwable).isInstanceOf(ConflictingEventException.class)
-          2. assert that the events associated to the bank account contains exactly one BankAccountRegistered event
-         */
+        assertThat(conflictingEventException).isInstanceOf(ConflictingEventException.class);
+        assertThatEvents("bankAccountId").containsExactly(new BankAccountRegistered("bankAccountId"));
     }
 
 }
