@@ -125,31 +125,42 @@ public class BankAccount {
 
     @DecisionFunction
     public void receiveTransfer(String bankAccountOriginId, String transferId, int creditTransferred) {
-        /*
-          1. instantiate a TransferReceived event
-          2. save the event (eventStore.save)
-          3. apply saved event on the bank account (EventProcessor.on)
-         */
+        eventStore.save(version, new TransferReceived(id,
+                                                      transferId,
+                                                      bankAccountOriginId,
+                                                      creditTransferred,
+                                                      creditBalance + creditTransferred))
+                  .forEach(this::applyEvent);
     }
 
     @DecisionFunction
     public void completeTransfer(String transferId) {
-        /*
-          1. throw an InvalidCommandException if the transfer id is absent from the pending transfers map
-          2. instantiate a TransferCompleted event
-          3. save the event List<Event> savedEvents = EventStore.save(events)
-          4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
-         */
+        TransferRequested transferRequested = pendingTransfers.get(transferId);
+        if (transferRequested == null) {
+            logger.info("transfer designed by id {} has not been requested or was already completed", transferId);
+            throw new InvalidCommandException();
+        }
+
+        eventStore.save(version, new TransferCompleted(id,
+                                                       transferId,
+                                                       transferRequested.bankAccountIdDestination))
+                  .forEach(this::applyEvent);
     }
 
     @DecisionFunction
     public void cancelTransfer(String transferId) {
-        /*
-          1. throw an InvalidCommandException if the transfer id is absent from the pending transfers map
-          2. instantiate a TransferCanceled event
-          3. save the event List<Event> savedEvents = EventStore.save(events)
-          4. apply saved events on the bank account savedEvents.foreach(this::applyEvent)
-         */
+        if (!pendingTransfers.containsKey(transferId)) {
+            logger.info("transfer designed by id {} has not been requested or was already completed", transferId);
+            throw new InvalidCommandException();
+        }
+
+        TransferRequested transferRequested = pendingTransfers.get(transferId);
+        eventStore.save(version, new TransferCanceled(id,
+                                                      transferId,
+                                                      transferRequested.bankAccountIdDestination,
+                                                      transferRequested.creditTransferred,
+                                                      creditBalance + transferRequested.creditTransferred))
+                  .forEach(this::applyEvent);
     }
 
     @Override
@@ -228,29 +239,23 @@ public class BankAccount {
         @Override
         @EvolutionFunction
         public void on(TransferReceived transferReceived) {
-            /*
-              1. affect the event's new credit balance to the bank account's balance
-              2. increment the aggregate's version
-             */
+            creditBalance = transferReceived.newCreditBalance;
+            version++;
         }
 
         @Override
         @EvolutionFunction
         public void on(TransferCompleted transferCompleted) {
-            /*
-              1. remove the event from the pending transfers map
-              2. increment the aggregate's version
-             */
+            pendingTransfers.remove(transferCompleted.transferId);
+            version++;
         }
 
         @Override
         @EvolutionFunction
         public void on(TransferCanceled transferCanceled) {
-            /*
-              1. affect the event's new credit balance to the bank account's balance
-              2. remove the event from the pending transfers map
-              3. increment the aggregate's version
-             */
+            pendingTransfers.remove(transferCanceled.transferId);
+            creditBalance = transferCanceled.newCreditBalance;
+            version++;
         }
     }
 
