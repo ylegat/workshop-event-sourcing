@@ -18,37 +18,27 @@ public class BalanceProjectionManager implements ProjectionManager {
 
     @Override
     public void on(BankAccountRegistered bankAccountRegistered) {
-        /*
-          project the event by using the balance repository
-         */
+        balanceRepository.writeCreditBalance(bankAccountRegistered.aggregateId, 0);
     }
 
     @Override
     public void on(CreditProvisioned creditProvisioned) {
-        /*
-          project the event by using the balance repository
-         */
+        balanceRepository.writeCreditBalance(creditProvisioned.aggregateId, creditProvisioned.newCreditBalance);
     }
 
     @Override
     public void on(CreditWithdrawn creditWithdrawn) {
-        /*
-          project the event by using the balance repository
-         */
+        balanceRepository.writeCreditBalance(creditWithdrawn.aggregateId, creditWithdrawn.newCreditBalance);
     }
 
     @Override
     public void on(TransferRequested transferRequested) {
-        /*
-          project the event by using the balance repository
-         */
+        balanceRepository.writeCreditBalance(transferRequested.aggregateId, transferRequested.newCreditBalance);
     }
 
     @Override
     public void on(TransferReceived transferReceived) {
-        /*
-          project the event by using the balance repository
-         */
+        balanceRepository.writeCreditBalance(transferReceived.aggregateId, transferReceived.newCreditBalance);
     }
 
     @Override
@@ -58,9 +48,7 @@ public class BalanceProjectionManager implements ProjectionManager {
 
     @Override
     public void on(TransferCanceled transferCanceled) {
-        /*
-          project the event by using the balance repository
-         */
+        balanceRepository.writeCreditBalance(transferCanceled.aggregateId, transferCanceled.newCreditBalance);
     }
 
 }
