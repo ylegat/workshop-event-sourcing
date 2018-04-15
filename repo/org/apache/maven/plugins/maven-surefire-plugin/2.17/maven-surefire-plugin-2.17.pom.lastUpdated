@@ -1,0 +1,23 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:01:42 CEST 2018
+dad66be638da0f0ea7a143c8eae0fd87845d69e3@default-orange-vallee-https\://nexus.build.libon.com/content/groups/public/.lastUpdated=1523825599512
+https\://nexus.build.libon.com/content/groups/public/.error=Could not transfer artifact org.apache.maven.plugins\:maven-surefire-plugin\:pom\:2.17 from/to orange-vallee (https\://nexus.build.libon.com/content/groups/public/)\: nexus.build.libon.com
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523826013645
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523825600586
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826102804
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523826012502
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523825599510
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826098137
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523826013340
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523825602047
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523826013020
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523825601302

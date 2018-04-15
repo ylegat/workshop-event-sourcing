@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Wed Apr 18 21:59:03 CEST 2018
+dad66be638da0f0ea7a143c8eae0fd87845d69e3@default-orange-vallee-https\://nexus.build.libon.com/content/groups/public/.lastUpdated=1524081543833
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1524081543831
+https\://nexus.build.libon.com/content/groups/public/.error=Could not transfer artifact org.apache.maven.plugins\:surefire\:pom\:2 from/to orange-vallee (https\://nexus.build.libon.com/content/groups/public/)\: nexus.build.libon.com\: Temporary failure in name resolution

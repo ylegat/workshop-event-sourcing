@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:01:42 CEST 2018
+maven-plugin-annotations-3.2.jar>my-plugins-repo=
+maven-plugin-annotations-3.2.pom>my-plugins-repo=
