@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:16:42 CEST 2018
+maven-plugin-descriptor-2.0.6.jar>orange-vallee=
+maven-plugin-descriptor-2.0.6.jar>my-plugins-repo=
+maven-plugin-descriptor-2.0.6.pom>my-plugins-repo=
+maven-plugin-descriptor-2.0.6.pom>orange-vallee=

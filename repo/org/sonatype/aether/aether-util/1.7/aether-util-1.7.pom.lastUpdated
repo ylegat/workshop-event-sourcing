@@ -1,0 +1,35 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:16:44 CEST 2018
+file\://home/aboivin/workspace/workshop-event-sourcing/repo/.error=Could not transfer artifact org.sonatype.aether\:aether-util\:pom\:1.7 from/to my-plugins-repo (file\://home/aboivin/workspace/workshop-event-sourcing/repo)\: Repository path /aboivin/workspace/workshop-event-sourcing/repo does not exist, and cannot be created.
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523826013595
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523825600753
+file\:////home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826012683
+@default-my-plugins-repo-/home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826137629
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826343102
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523825600016
+@default-my-plugins-repo-file\:///${}/repo/.lastUpdated=1523826339893
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523826012414
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523825648726
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826098072
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523826013198
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+file\:///${}/repo/.error=Could not transfer artifact org.sonatype.aether\:aether-util\:pom\:1.7 from/to my-plugins-repo (file\:///${}/repo)\: Repository path /${}/repo does not exist, and cannot be created.
+@default-my-plugins-repo-/home/aboivin/workspace/workshop-event-sourcing/repo2/.lastUpdated=1523826219045
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523825602246
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+/home/aboivin/workspace/workshop-event-sourcing/repo2/.error=Could not transfer artifact org.sonatype.aether\:aether-util\:pom\:1.7 from/to my-plugins-repo (/home/aboivin/workspace/workshop-event-sourcing/repo2)\: Cannot access /home/aboivin/workspace/workshop-event-sourcing/repo2 with type default using the available connector factories\: BasicRepositoryConnectorFactory
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+https\://nexus.build.libon.com/content/groups/public/.lastUpdated=1523827004551
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523826012920
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+@default-my-plugins-repo-file\://home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826118104
+/home/aboivin/workspace/workshop-event-sourcing/repo/.error=Could not transfer artifact org.sonatype.aether\:aether-util\:pom\:1.7 from/to my-plugins-repo (/home/aboivin/workspace/workshop-event-sourcing/repo)\: Cannot access /home/aboivin/workspace/workshop-event-sourcing/repo with type default using the available connector factories\: BasicRepositoryConnectorFactory
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523825601557

@@ -1,0 +1,36 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:05:43 CEST 2018
+dad66be638da0f0ea7a143c8eae0fd87845d69e3@default-orange-vallee-https\://nexus.build.libon.com/content/groups/public/.lastUpdated=1523825600129
+https\://nexus.build.libon.com/content/groups/public/.error=Could not transfer artifact org.pegdown\:pegdown\:pom\:1.2.1 from/to orange-vallee (https\://nexus.build.libon.com/content/groups/public/)\: nexus.build.libon.com
+file\://home/aboivin/workspace/workshop-event-sourcing/repo/.error=Could not transfer artifact org.pegdown\:pegdown\:pom\:1.2.1 from/to my-plugins-repo (file\://home/aboivin/workspace/workshop-event-sourcing/repo)\: Repository path /aboivin/workspace/workshop-event-sourcing/repo does not exist, and cannot be created.
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523826013745
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523825600811
+file\:////home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826012798
+@default-my-plugins-repo-/home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826138020
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826343339
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523825600128
+@default-my-plugins-repo-file\:///${}/repo/.lastUpdated=1523826340333
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523826012597
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523825655253
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826098243
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523826013501
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+@default-my-plugins-repo-/home/aboivin/workspace/workshop-event-sourcing/repo2/.lastUpdated=1523826219311
+file\:///${}/repo/.error=Could not transfer artifact org.pegdown\:pegdown\:pom\:1.2.1 from/to my-plugins-repo (file\:///${}/repo)\: Repository path /${}/repo does not exist, and cannot be created.
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523825602334
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+/home/aboivin/workspace/workshop-event-sourcing/repo2/.error=Could not transfer artifact org.pegdown\:pegdown\:pom\:1.2.1 from/to my-plugins-repo (/home/aboivin/workspace/workshop-event-sourcing/repo2)\: Cannot access /home/aboivin/workspace/workshop-event-sourcing/repo2 with type default using the available connector factories\: BasicRepositoryConnectorFactory
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523826013115
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+@default-my-plugins-repo-file\://home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826118438
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523825601628
+/home/aboivin/workspace/workshop-event-sourcing/repo/.error=Could not transfer artifact org.pegdown\:pegdown\:pom\:1.2.1 from/to my-plugins-repo (/home/aboivin/workspace/workshop-event-sourcing/repo)\: Cannot access /home/aboivin/workspace/workshop-event-sourcing/repo with type default using the available connector factories\: BasicRepositoryConnectorFactory

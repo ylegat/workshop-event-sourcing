@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:16:20 CEST 2018
+maven-install-plugin-2.4.jar>my-plugins-repo=
+maven-install-plugin-2.4.pom>my-plugins-repo=
+maven-install-plugin-2.4.pom>orange-vallee=
+maven-install-plugin-2.4.jar>orange-vallee=
