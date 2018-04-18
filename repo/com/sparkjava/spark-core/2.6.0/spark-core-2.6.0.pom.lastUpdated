@@ -1,0 +1,10 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:16:27 CEST 2018
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826013758
+file\://${project.asedir}/repo/.error=Could not transfer artifact com.sparkjava\:spark-core\:pom\:2.6.0 from/to my-repo (file\://${project.asedir}/repo)\: Repository path /repo does not exist, and cannot be created.
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826097137
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523825598659
+https\://nexus.build.libon.com/content/groups/public/.lastUpdated=1523826987877
+@default-my-repo-file\://${project.asedir}/repo/.lastUpdated=1523826082567
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=

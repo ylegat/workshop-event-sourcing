@@ -1,0 +1,35 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 15 23:16:43 CEST 2018
+file\://home/aboivin/workspace/workshop-event-sourcing/repo/.error=Could not transfer artifact org.codehaus.plexus\:plexus-interpolation\:pom\:1.14 from/to my-plugins-repo (file\://home/aboivin/workspace/workshop-event-sourcing/repo)\: Repository path /aboivin/workspace/workshop-event-sourcing/repo does not exist, and cannot be created.
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523826013583
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523825600711
+file\:////home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826012676
+@default-my-plugins-repo-/home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826137612
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826343087
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+file\:///home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523825599980
+@default-my-plugins-repo-file\:///${}/repo/.lastUpdated=1523826339866
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523826012399
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.lastUpdated=1523825647046
+file\:///home/aboivin/workspace/workshop-event-sourcing/domain/repo/.lastUpdated=1523826098059
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523826013186
+file\:///home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/domain/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+file\:///${}/repo/.error=Could not transfer artifact org.codehaus.plexus\:plexus-interpolation\:pom\:1.14 from/to my-plugins-repo (file\:///${}/repo)\: Repository path /${}/repo does not exist, and cannot be created.
+@default-my-plugins-repo-/home/aboivin/workspace/workshop-event-sourcing/repo2/.lastUpdated=1523826219025
+file\:///home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.lastUpdated=1523825602203
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/infrastructure/repo/.error=
+/home/aboivin/workspace/workshop-event-sourcing/repo2/.error=Could not transfer artifact org.codehaus.plexus\:plexus-interpolation\:pom\:1.14 from/to my-plugins-repo (/home/aboivin/workspace/workshop-event-sourcing/repo2)\: Cannot access /home/aboivin/workspace/workshop-event-sourcing/repo2 with type default using the available connector factories\: BasicRepositoryConnectorFactory
+file\:///home/aboivin/workspace/workshop-event-sourcing/at/repo/.error=
+https\://nexus.build.libon.com/content/groups/public/.lastUpdated=1523827003920
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.lastUpdated=1523826012903
+file\:////home/aboivin/workspace/workshop-event-sourcing/application/repo/.error=
+file\:////home/aboivin/workspace/workshop-event-sourcing/projection/repo/.error=
+@default-my-plugins-repo-file\://home/aboivin/workspace/workshop-event-sourcing/repo/.lastUpdated=1523826118091
+/home/aboivin/workspace/workshop-event-sourcing/repo/.error=Could not transfer artifact org.codehaus.plexus\:plexus-interpolation\:pom\:1.14 from/to my-plugins-repo (/home/aboivin/workspace/workshop-event-sourcing/repo)\: Cannot access /home/aboivin/workspace/workshop-event-sourcing/repo with type default using the available connector factories\: BasicRepositoryConnectorFactory
+file\:///home/aboivin/workspace/workshop-event-sourcing/application/repo/.lastUpdated=1523825601497
